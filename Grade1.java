@@ -1,31 +1,41 @@
-public class Grade1 {
+public class Grade
+{
     // Convert the mark into a grade   TODO: complete this
-    String grade(int mark) { 
-        String result; 
-        if (mark < 0) result = "Invalid"; 
-        else if (mark < 50) result = "Fail"; 
-        else if (mark < 60) result = "Pass"; 
-        else if (mark < 70) result = "Merit"; 
-        else if (mark <= 100) result = "Distinction"; 
-        else result = "Invalid"; 
+    String grade(int mark)
+    {
+        String result;
+        if (mark < 0) result = "Invalid";
+        else if (mark < 50) result = "Fail";
+        else if (mark < 60) result = "Pass";
+        else if (mark < 70) result = "Merit";
+        else if (mark <= 100) result = "Distinction";
+        else result = "Invalid";
         return result;
     }
 
     // Convert string to int, or -1 if invalid TODO: complete this
-    int convert(String mark) {
-        if (mark.length() > 1 && mark.charAt(0) == '0') return -1; 
-        int n; 
-        try { n = Integer.parseInt(mark); } 
-        catch (Exception err) { n = -1; } 
-        if (n > 100) n = -1; 
+    int convert(String mark)
+    {
+        if (mark.length() > 1 && mark.charAt(0) == '0') return -1;
+        int n;
+        try {
+          n = Integer.parseInt(mark);
+        } catch (Exception err) {
+            n = -1;
+        }
+        if (n > 100) n = -1;
         return n;
     }
 
     // Crash the program if a test fails (instead of assert)
-    void claim(boolean b) { if (!b) throw new Error("Test failure"); }
+    void claim(boolean b)
+    {
+      if (!b) throw new Error("Test failure");
+    }
 
     // Run the tests.
-    void test() {
+    void test()
+    {
         // Check each grade
         claim(grade(45).equals("Fail"));
         claim(grade(55).equals("Pass"));
@@ -61,13 +71,10 @@ public class Grade1 {
         System.out.println("All tests passed");
     }
 
-    void run(String[] args) {
-        if (args.length == 0) {
-            test();
-        }
-        else if (args.length == 1) {
-            System.out.println(grade(convert(args[0])));
-        }
+    void run(String[] args)
+    {
+        if (args.length == 0) test();
+        else if (args.length == 1) System.out.println(grade(convert(args[0])));
         else {
             System.err.println("Use:  java Grade   or  java Grade m");
             System.err.println("where m is an integer mark from 0 to 100");
@@ -75,8 +82,9 @@ public class Grade1 {
         }
     }
 
-    public static void main(String[] args) {
-        Grade1 program = new Grade1();
+    public static void main(String[] args)
+    {
+        Grade program = new Grade();
         program.run(args);
     }
 }
